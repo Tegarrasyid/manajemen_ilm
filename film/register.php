@@ -110,7 +110,7 @@ require "koneksi.php";
       } else {
           $query = mysqli_query($koneksi, "INSERT INTO users (username, email, password) VALUES ('$username','$email','$password')");
           if ($query) {
-              echo "<div class='alert alert-success'>Register Berhasil, redirect ke login...</div>";
+              echo "<div class='alert alert-success'>Register Berhasil</div>";
               echo "<meta http-equiv='refresh' content='1; url=login.php'>";
           } else {
               echo "<div class='alert alert-danger'>Register Gagal</div>";
@@ -122,3 +122,4 @@ require "koneksi.php";
 
 </body>
 </html>
+
