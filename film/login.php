@@ -115,7 +115,7 @@ $_SESSION['login'] = true;
 
           $redirect = $_SESSION['redirect_after_login'] ?? 'index.php?sukses';
           unset($_SESSION['redirect_after_login']); 
-          echo "<div class='alert alert-success'>Login berhasil, redirect...</div>";
+          echo "<div class='alert alert-success'>Login berhasil</div>";
           echo "<meta http-equiv='refresh' content='1; url=$redirect'>";
       } else {
           echo "<div class='alert alert-danger'>Email atau Password salah</div>";
@@ -126,3 +126,4 @@ $_SESSION['login'] = true;
 
 </body>
 </html>
+
