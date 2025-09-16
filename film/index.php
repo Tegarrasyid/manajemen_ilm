@@ -59,18 +59,45 @@ $result = mysqli_query($koneksi, $query);
         h2 {
             color: #333;
         }
-        form {
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 2 kolom */
+            gap: 20px;
             background: #fff;
             padding: 15px;
             border-radius: 8px;
             box-shadow: 0 0 5px rgba(0,0,0,0.1);
             margin-bottom: 20px;
         }
+        .form-left, .form-right {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-submit {
+            grid-column: 1 / span 2; 
+            display: flex;
+            justify-content: center;
+        }
+        .form-submit button {
+            width: 5000px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 6px;
+        }
         label {
             font-weight: bold;
         }
-        input, textarea, select, button {
-            width: 1260px;
+        input, select, button {
+            width: 600px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        textarea{
+            width: 600px;
+            height: 85px;
             margin-top: 5px;
             margin-bottom: 15px;
             padding: 8px;
@@ -90,8 +117,14 @@ $result = mysqli_query($koneksi, $query);
             margin-bottom: 15px;
             border-radius: 4px;
         }
-        .success { background: #d4edda; color: #155724; }
-        .error { background: #f8d7da; color: #721c24; }
+        .success { 
+            background: #d4edda; 
+            color: #155724; 
+        }
+        .error { 
+            background: #f8d7da; 
+            color: #721c24; 
+        }
 
         .filter {
             margin: 10px 0;
@@ -196,33 +229,40 @@ $result = mysqli_query($koneksi, $query);
     Tambah Film 
     <a href="logout.php" class="btn logout">Logout</a>
 </h2>
-<form method="post" enctype="multipart/form-data">
-    <label>Nama Film</label>
-    <input type="text" name="nama_film" required>
+<form method="post" enctype="multipart/form-data" class="form-grid">
+    <div class="form-left">
+        <label>Nama Film</label>
+        <input type="text" name="nama_film" required>
 
-    <label>Genre</label>
-    <input type="text" name="genre" required>
+        <label>Genre</label>
+        <input type="text" name="genre" required>
 
-    <label>Sutradara</label>
-    <input type="text" name="sutradara" required>
+        <label>Sutradara</label>
+        <input type="text" name="sutradara" required>
 
-    <label>Durasi </label>
-    <input type="time" name="durasi" required>
+        <label>Durasi </label>
+        <input type="time" name="durasi" required>
+    </div>
 
-    <label>Status Film</label>
-    <select name="status_film" required>
-        <option value="now_playing">Now Playing</option>
-        <option value="upcoming">Upcoming</option>
-    </select>
+    <div class="form-right">
+        <label>Status Film</label>
+        <select name="status_film" required>
+            <option value="now_playing">Now Playing</option>
+            <option value="upcoming">Upcoming</option>
+        </select>
 
-    <label>Poster</label>
-    <input type="file" name="poster" accept="image/*" required>
+        <label>Poster</label>
+        <input type="file" name="poster" accept="image/*" required>
 
-    <label>Sinopsis</label>
-    <textarea name="sinopsis" rows="4" required></textarea>
+        <label>Sinopsis</label>
+        <textarea name="sinopsis" rows="4" required></textarea>
+    </div>
 
-    <button type="submit" name="simpan">Simpan</button>
+    <div class="form-submit">
+        <button type="submit" name="simpan">Simpan</button>
+    </div>
 </form>
+
 
 <!-- Filter Tombol -->
 <div class="filter">
